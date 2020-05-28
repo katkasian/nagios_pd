@@ -2,7 +2,7 @@ This is a rundown of basic setup for Nagios Core on Ubuntu, which also includes 
 Links to instructions about integration with PagerDuty and comments are provided.
 
 
-_modified from https://github.com/andrewpuch/nagios_setup _
+*modified from https://github.com/andrewpuch/nagios_setup*
 
 __NAGIOS SETUP__
 ```
