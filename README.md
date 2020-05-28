@@ -2,7 +2,7 @@ This is a rundown of basic setup for Nagios Core on Ubuntu, which also includes 
 Links to instructions about integration with PagerDuty and comments are provided.
 
 
-#modified from https://github.com/andrewpuch/nagios_setup 
+_modified from https://github.com/andrewpuch/nagios_setup __
 
 __NAGIOS SETUP__
 ```
@@ -102,7 +102,7 @@ Add the following to the host definition:
  
  Instructions:
  https://www.pagerduty.com/docs/guides/nagios-integration-guide/
- !==For a Google VM, follow steps for source installation/Amazon Linux & CentOS 6+
- !==For one-way integration (PAGERDUTY can receive alerts but not modify anything on NagiosCore), follow up to the step 8.
+ - For a Google VM, follow steps for source installation/Amazon Linux & CentOS 6+
+ - For one-way integration (PAGERDUTY can receive alerts but not modify anything on NagiosCore), follow up to the step 8.
 
 
