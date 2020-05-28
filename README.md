@@ -90,14 +90,19 @@ Add the following to the host definition:
  Add the following to a service you would like to receive notifications about (in this example, root partition)
  
  ```
-        check_command                   check_local_disk!20%!10%!/
-        #check_command                  check_local_disk!95%90% / !=== change parameters by uncommenting to test notifications
+        #check_command                  check_local_disk!95%90% / ; change parameters by uncommenting to test notifications
         notifications_enabled           1
         contact_groups                  admins
         notification_period             24x7
-        notification_options            c,w !==recieve notifications for "critical" and "warning states"
+        notification_options            c,w ;    recieve notifications for "critical" and "warning states"
  ```     
-        
+   
+ Restart and check the status of nagios.
+ 
+ ```
+ service nagios start
+ service nagios status
+```   
  __INTEGRATION WITH PAGERDUTY__
  
  Instructions:
