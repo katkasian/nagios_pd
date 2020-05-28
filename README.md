@@ -1,8 +1,11 @@
 This is a rundown of basic setup for Nagios Core on Ubuntu, which also includes configuration of notifications on local host.
 Links to instructions about integration with PagerDuty and comments are provided.
 
-NAGIOS SETUP
-==!modified from https://github.com/andrewpuch/nagios_setup 
+
+#modified from https://github.com/andrewpuch/nagios_setup 
+
+__NAGIOS SETUP__
+```
 sudo su
 apt-get update
 apt-get upgrade -y
@@ -35,8 +38,9 @@ cd nagios-plugins-2.0.3
 make
 make install
 nano /usr/local/nagios/etc/nagios.cfg
+```
 Remove the hashtag in front of this line. 
-----------------------------------------
+```
 Before --
 #cfg_dir=/usr/local/nagios/etc/servers
 
@@ -44,28 +48,32 @@ After --
 cfg_dir=/usr/local/nagios/etc/servers
 
 mkdir /usr/local/nagios/etc/servers
-
+```
 Add Your Email
---------------
+```
 nano /usr/local/nagios/etc/objects/contacts.cfg
 
 a2enmod rewrite cgi
 htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 service nagios start
-
+```
 ===!if this throws an error, follow instructions:
 ===!https://serverfault.com/questions/774498/failed-to-start-nagios-service-unit-nagios-service-failed-to-load-no-such-file/774501
 
-
+```
 service apache2 restart
 ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
+```
 
-ADDING NOTIFICATIONS FOR LOCALHOST
+__ADDING NOTIFICATIONS FOR LOCALHOST__
+```
 nano /usr/local/nagios/etc/objects/localhost.cfg
 -----
+```
 Add the following to the host definition:
 
+```
 
         check_command           check-host-alive
         check_interval          2
@@ -77,18 +85,21 @@ Add the following to the host definition:
         notification_period     24x7
         notification_options    d,u,r
  
- ---
+ ```
+ -----
  Add the following to a service you would like to receive notifications about (in this example, root partition)
  
+ ```
         check_command                   check_local_disk!20%!10%!/
         #check_command                  check_local_disk!95%90% / !=== change parameters by uncommenting to test notifications
         notifications_enabled           1
         contact_groups                  admins
         notification_period             24x7
         notification_options            c,w !==recieve notifications for "critical" and "warning states"
+ ```     
         
-        
- INTEGRATION WITH PAGERDUTY
+ __INTEGRATION WITH PAGERDUTY__
+ 
  Instructions:
  https://www.pagerduty.com/docs/guides/nagios-integration-guide/
  !==For a Google VM, follow steps for source installation/Amazon Linux & CentOS 6+
