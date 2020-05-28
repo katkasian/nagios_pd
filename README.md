@@ -58,8 +58,7 @@ htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 service nagios start
 ```
-===!if this throws an error, follow instructions:
-===!https://serverfault.com/questions/774498/failed-to-start-nagios-service-unit-nagios-service-failed-to-load-no-such-file/774501
+If this throws an error, follow instructions:  https://serverfault.com/questions/774498/failed-to-start-nagios-service-unit-nagios-service-failed-to-load-no-such-file/774501
 
 ```
 service apache2 restart
